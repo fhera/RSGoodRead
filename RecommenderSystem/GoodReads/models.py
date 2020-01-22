@@ -20,8 +20,8 @@ class Usuario(models.Model):
     idUsuario = models.IntegerField(primary_key=True)
 
 class Puntuacion(models.Model):
-    idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
-    idLibro = models.ForeignKey("Libro", on_delete=models.CASCADE)
+    usuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    libro = models.ForeignKey("Libro", on_delete=models.CASCADE)
     Puntuacion = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     def __str__(self):
         return self.Puntuacion

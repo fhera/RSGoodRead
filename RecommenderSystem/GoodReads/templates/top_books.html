@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+
+
+{% endblock %}
+{% block content %}
+
+<dl class="uk-description-list-line">
+    {% for libro in libros %}
+    <dt>{{libro.Titulo}}</dt>
+    <dd>Autor: {{libro.Autor}} | Puntuacion media: {{libro.media | floatformat:"2"}} de 5</a></dd>
+    {% endfor %}
+</dl>
+
+{% endblock %}
