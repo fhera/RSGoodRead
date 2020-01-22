@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'GoodReads.apps.GoodreadsConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = ''
+STATICFILES_DIRS = (
+    'static',
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = ''
+MEDIAFILES_DIRS = (
+    'media',
+)

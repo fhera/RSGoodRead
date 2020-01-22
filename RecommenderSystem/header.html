@@ -1,0 +1,33 @@
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+	<nav class="uk-navbar">
+		<ul class="uk-navbar-nav">
+			<li class="{% block inicio %} {% endblock %}">
+				<a href="/">Inicio</a></li>
+			<li class="{% block populate %} {% endblock %}">
+				<a href="/populate">Poblar la Base de Datos</a>
+			</li>
+			<li class="{% block loadRS %} {% endblock %}">
+				<a href="/loadRS">Cargar el Sistema de Recomendacion</a>
+			</li>
+			<li class="{% block books %} {% endblock %}">
+				<a href="/books">Muestra los libros puntuados por un Usuario</a>
+			</li>
+			<li class="{% block recommended %} {% endblock %}">
+				<a href="/topBooks">
+					Libros con mejor puntuación
+				</a>
+			</li>
+			<li class="{% block similar %} {% endblock %}">
+				<a href="/similarFilms">Tres Peliculas que mas se parecen a otra</a>
+			</li>
+			<li class="{% block recommendedUser %} {% endblock %}">
+				<a href="/recommendedUsersFilms">
+					Recomienda tres Usuarios a una Pelicula
+				</a>
+			</li>
+			<li class="{% block search %} {% endblock %}">
+				<a href="/search">Peliculas puntuadas por un Usuario</a>
+			</li>
+		</ul>
+	</nav>
+</div>
