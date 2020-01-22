@@ -75,7 +75,7 @@ def populate_puntuaciones(u, l):
         else:
             count += 1
 
-        if count <= 10:
+        if count <= 2:
             lista.append(
                 Puntuacion(
                     usuario=u[int(rip[1].strip())],
