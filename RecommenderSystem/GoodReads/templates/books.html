@@ -1,0 +1,30 @@
+{% extends 'index.html' %}}
+
+{% block titulo %} Búsqueda por id de usuarios{%endblock%}
+
+{% block content %}
+<form class="uk-form" id="formulario" method="post" action=''>{% csrf_token %}
+    <fieldset>
+        <legend>Búsqueda por usuarios</legend>
+        <input type="text" name="id_usuario" id="id_usuario" placeholder="Id de usuario" />
+        <BR><BR>
+
+        <input class="uk-button" type='submit' value='Realizar Busqueda' />
+    </fieldset>
+</form>
+
+<hr>
+
+{% if puntuaciones %}
+<h3> Libros puntuados: {{ puntuaciones|length }}</h3>
+<dl class="uk-description-list-line">
+
+    {% for puntuacion in puntuaciones %}
+    <dt>{{puntuacion.libro.Titulo}}</dt>
+    <dd>
+        Autor: {{puntuacion.libro.Autor}} | Puntuacion: {{puntuacion.Puntuacion}}
+    </dd>
+    {% endfor %}
+</dl>
+{% endif %}
+{% endblock %}

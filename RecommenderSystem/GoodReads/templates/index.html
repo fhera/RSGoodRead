@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+    <meta charset='utf-8'>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static "css/uikit.min.css"%}" />
+    <link rel=" stylesheet" href="{% static "css/components/accordion.min.css"%}" />
+    <link rel=" stylesheet" href="{% static "css/components/datepicker.min.css" %}" />
+    <script src="{% static "js/jquery.min.js"%}"></script>
+    <script src="{% static "js/uikit.min.js"%}"></script>
+    <script src="{% static "js/components/accordion.min.js"%}"></script>
+    <script src="{% static "js/components/datepicker.min.js"%}"></script>
+
+    <title>Practica RS examen</title>
+
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <h1 class="uk-article-title">{% block titulo %} {% endblock %}</h1>
+    <div class="content">
+        {% block content %}
+        <div class="uk-animation-fade">
+            <article class="uk-article">
+                <h1 class="uk-article-title">EJERCICIO DE DJANGO </h1>
+                <p class="uk-article-meta"></p>
+                <p class="uk-article-lead">Se pide construir una web con un menú principal, que permita las siguientes
+                    opciones: <br> <br>
+                    1. Dado un usuario (Id), mostrar todos los libros que ha puntuado (Título) y su puntuación. <br>
+                    2. Dado un usuario (Id), le recomiende cinco libros que no haya puntuado (Título). Usando un sistema
+                    de recomendación de tipo filtrado colaborativo basado en ítems. <br>
+                    3. Dado un usuario (Id), le recomiende cinco libros que no haya puntuado (Título). Usando un sistema
+                    de recomendación de tipo filtrado colaborativo basado en usuarios. <br>
+                    4. Dado un libro (Id), mostrar tres usuarios a los que se le recomendaría. <br>
+                    5. Dada un libro(Id), mostrar los tres libros (ISBN, título y autor) mejor puntuados. <br>
+                </p>
+
+                <hr class="uk-article-divider">
+
+            </article>
+        </div>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

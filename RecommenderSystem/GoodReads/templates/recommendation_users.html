@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block titulo %}Usuarios Recomendados para el libro{% endblock %}
+
+
+{% block content %}
+<form class="uk-form" id="formulario" method="post" action=''>{% csrf_token %}
+    <fieldset>
+        <legend>Búsqueda por usuarios</legend>
+        <input type="text" name="id_book" id="id_book" placeholder="Id del libro" />
+        <BR><BR>
+
+        <input class="uk-button" type='submit' value='Realizar Busqueda' />
+    </fieldset>
+</form>
+
+<hr>
+
+<dl class="uk-description-list-line">
+    {% for usuario, puntuacion in items %}
+    <dt>Id de usuario: {{usuario.idUsuario}}</dt>
+    <dd>Puntuación: {{puntuacion}} de 5</a></dd>
+    {% empty %}
+    <h2> Insuficientes datos </h2>
+    {% endfor %}
+</dl>
+{% endblock %}

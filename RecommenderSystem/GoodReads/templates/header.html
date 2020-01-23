@@ -1,0 +1,35 @@
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+	<nav class="uk-navbar">
+		<ul class="uk-navbar-nav">
+			<li class="{% block inicio %} {% endblock %}">
+				<a href="/">Inicio</a></li>
+			<li class="{% block populate %} {% endblock %}">
+				<a href="/populate">Poblar la Base de Datos</a>
+			</li>
+			<li class="{% block loadRS %} {% endblock %}">
+				<a href="/loadRS">Cargar el Sistema de Recomendacion</a>
+			</li>
+			<li class="{% block books %} {% endblock %}">
+				<a href="/books">Muestra los libros puntuados por un Usuario</a>
+			</li>
+			<li class="{% block recommended %} {% endblock %}">
+				<a href="/topBooks">
+					Libros con mejor puntuación
+				</a>
+			</li>
+			<li class="{% block recommendedUser %} {% endblock %}">
+				<a href="/similarBooksItems">
+					Cinco libros recomendados a un usuario - RS Basado en Items
+				</a>
+			</li>
+			<li class="{% block similar %} {% endblock %}">
+				<a href="/similarBooks">
+					Cinco libros recomendados a un usuario - RS Basado en Usuarios
+				</a>
+			</li>
+			<li class="{% block search %} {% endblock %}">
+				<a href="/recomendationUser">Recomienda tres usuarios a un libro</a>
+			</li>
+		</ul>
+	</nav>
+</div>
