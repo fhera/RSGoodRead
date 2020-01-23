@@ -17,16 +17,18 @@
 					Libros con mejor puntuación
 				</a>
 			</li>
-			<li class="{% block similar %} {% endblock %}">
-				<a href="/similarFilms">Tres Peliculas que mas se parecen a otra</a>
-			</li>
 			<li class="{% block recommendedUser %} {% endblock %}">
-				<a href="/recommendedUsersFilms">
-					Recomienda tres Usuarios a una Pelicula
+				<a href="/similarBooksItems">
+					Cinco libros recomendados a un usuario - RS Basado en Items
+				</a>
+			</li>
+			<li class="{% block similar %} {% endblock %}">
+				<a href="/similarBooks">
+					Cinco libros recomendados a un usuario - RS Basado en Usuarios
 				</a>
 			</li>
 			<li class="{% block search %} {% endblock %}">
-				<a href="/search">Peliculas puntuadas por un Usuario</a>
+				<a href="/recomendationUser">Recomienda tres usuarios a un libro</a>
 			</li>
 		</ul>
 	</nav>
