@@ -66,15 +66,95 @@ class LibrosPuntuados(FormView):
 # Ejercicio 2: Dado un usuario (Id), le recomiende cinco
 # libros que no haya puntuado (Título). Usando un sistema
 # de recomendación de tipo filtrado colaborativo basado en ítems.
+class LibrosRecomendadosItems(FormView):
+    template_name = "recommended_books_items.html"
+    form_class = UserForm
+    success_url = reverse_lazy("similarBooks")
+
+    def form_valid(self, form):
+        context = super().get_context_data()
+        id_user = form.cleaned_data['id_usuario']
+        user = get_object_or_404(
+            Usuario,
+            pk=id_user
+        )
+        shelf = shelve.open("dataRS.dat")
+        prefs = shelf['Prefs']
+        sim_items = shelf['SimItems']
+        shelf.close()
+        rankings = getRecommendedItems(prefs, sim_items, int(id_user))
+        recommended = rankings[:5]
+        libros = []
+        puntuaciones = []
+        for re in recommended:
+            libros.append(Libro.objects.get(pk=re[1]))
+            puntuaciones.append(re[0])
+        items = zip(libros, puntuaciones)
+        context["user"] = user
+        context["items"] = items
+        return self.render_to_response(context)
 
 
 # Ejercicio 3: Dado un usuario (Id), le recomiende cinco
 # libros que no haya puntuado (Título). Usando un sistema
 # de recomendación de tipo filtrado colaborativo basado en usuarios.
+class LibrosRecomendados(FormView):
+    template_name = "recommended_books_users.html"
+    form_class = UserForm
+    success_url = reverse_lazy("similarBooks")
+
+    def form_valid(self, form):
+        context = super().get_context_data()
+        id_user = form.cleaned_data['id_usuario']
+        user = get_object_or_404(
+            Usuario,
+            pk=id_user
+        )
+        shelf = shelve.open("dataRS.dat")
+        prefs = shelf['Prefs']
+        shelf.close()
+        rankings = getRecommendations(prefs, int(id_user))
+        recommended = rankings[:5]
+        libros = []
+        puntuaciones = []
+        for re in recommended:
+            libros.append(Libro.objects.get(pk=re[1]))
+            puntuaciones.append(re[0])
+        items = zip(libros, puntuaciones)
+        context["user"] = user
+        context["items"] = items
+        return self.render_to_response(context)
 
 
 # Ejercicio 4: Dado un libro (Id), mostrar tres usuarios a los que se
 # le recomendaría.
+class UsuariosRecomendados(FormView):
+    template_name = "recommendation_users.html"
+    form_class = BookForm
+    success_url = reverse_lazy("recomendationUser")
+
+    def form_valid(self, form):
+        context = super().get_context_data()
+        id_book = form.cleaned_data['id_book']
+        user = get_object_or_404(
+            Usuario,
+            pk=id_book
+        )
+        shelf = shelve.open("dataRS.dat")
+        prefs = shelf['ItemsPrefs']
+        shelf.close()
+        rankings = getRecommendations(prefs, int(id_book))
+        recommended = rankings[:3]
+        usuarios = []
+        puntuaciones = []
+        for re in recommended:
+            usuarios.append(Usuario.objects.get(pk=re[1]))
+            puntuaciones.append(re[0])
+        items = zip(usuarios, puntuaciones)
+        context["user"] = user
+        context["items"] = items
+        return self.render_to_response(context)
+
 
 
 # Ejercicio 5: Dada un libro(Id), mostrar los tres libros (ISBN, título y autor)

@@ -1,6 +1,7 @@
-{% extends 'index.html' %}}
+{% extends 'index.html' %}
 
-{% block titulo %} Búsqueda por id de usuarios{%endblock%}
+{% block titulo %}Lista de recomendaciones por items{% endblock %}
+
 
 {% block content %}
 <form class="uk-form" id="formulario" method="post" action=''>{% csrf_token %}
@@ -15,16 +16,12 @@
 
 <hr>
 
-{% if puntuaciones %}
-<h3> Libros puntuados: {{ puntuaciones|length }}</h3>
 <dl class="uk-description-list-line">
-
-    {% for puntuacion in puntuaciones %}
-    <dt>{{puntuacion.libro.Titulo}}</dt>
-    <dd>
-        Autor: {{puntuacion.libro.Autor}} | Puntuacion: {{puntuacion.Puntuacion}}
-    </dd>
+    {% for libro, puntuacion in items %}
+    <dt>{{libro.Titulo}}</dt>
+    <dd>Puntuaciones: {{puntuacion}} de 5</a></dd>
+    {% empty %}
+    <h2> Insuficientes datos </h2>
     {% endfor %}
 </dl>
-{% endif %}
 {% endblock %}

@@ -11,4 +11,4 @@ class UserForm(forms.Form):
 
 
 class BookForm(forms.Form):
-    id = forms.CharField(label='Book ID')
+    id_book = forms.CharField(label='Book ID')
